@@ -1,7 +1,20 @@
 document.addEventListener("DOMContentLoaded", main);
 
+let wins = 0;
+
 function main() {
 
+  //We play a game 5 times
+  for (let i = 0; i < 5; i++) {
+    game();
+  }
+
+  //Evaluate the number of games won
+  wins >= 3 ? alert(`You won ${wins}/5 games! Good Job!`) : alert (`You lost! You won ${wins}/5 games. Try again next time`);
+
+}
+
+function game() {
   console.log(playRound(prompt("Choose your action:"), getComputerChoice()));
 }
 
@@ -43,6 +56,7 @@ function playRound(playerChoice, computerChoice) {
       return `You loose! ${computerChoice} beats ${playerChoice}!`;
       break;
     case 1:
+      wins++;
       return `You win! ${playerChoice} beats ${computerChoice}`;
       break;
     case 2:
